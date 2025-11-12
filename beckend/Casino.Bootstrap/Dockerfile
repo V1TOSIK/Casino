@@ -11,19 +11,19 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["AuthService/Auth.Bootstrap/Auth.Bootstrap.csproj", "AuthService/Auth.Bootstrap/"]
-RUN dotnet restore "./AuthService/Auth.Bootstrap/Auth.Bootstrap.csproj"
+COPY ["Casino.Bootstrap/Casino.Bootstrap.csproj", "Casino.Bootstrap/"]
+RUN dotnet restore "./Casino.Bootstrap/Casino.Bootstrap.csproj"
 COPY . .
-WORKDIR "/src/AuthService/Auth.Bootstrap"
-RUN dotnet build "./Auth.Bootstrap.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Casino.Bootstrap"
+RUN dotnet build "./Casino.Bootstrap.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Auth.Bootstrap.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Casino.Bootstrap.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Auth.Bootstrap.dll"]
+ENTRYPOINT ["dotnet", "Casino.Bootstrap.dll"]
