@@ -1,0 +1,65 @@
+services:
+  # frontend:
+  #   # build:
+  #   #   context: ./frontend
+  #   container_name: frontend
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./frontend:/app
+  #   networks:
+  #     - app_network
+
+  backend:
+    container_name: backend
+    build:
+      context: ./
+      dockerfile: ./Casino.Bootstrap/Dockerfile
+    ports:
+      - "8000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - postgres_db
+    env_file:
+      - backend.env
+
+  postgres_db:
+    container_name: postgres
+    image: postgres:17
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: ${WRITE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${WRITE_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${WRITE_POSTGRES_DB}
+    volumes:
+      - casino_write_db_data:/var/lib/postgresql/data
+    env_file:
+      - backend.env
+    networks:
+      - casino_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${WRITE_POSTGRES_USER} -d ${WRITE_POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  mongo_db:
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - casino_network
+
+volumes:
+  mongo_data: {}
+  casino_write_db_data: {}
+
+networks:
+  casino_network:
+    driver: bridge
