@@ -1,0 +1,45 @@
+# User-specific files
+.idea/
+.vscode/
+.vs/
+.vsconfig
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# User-specific files (Windows)
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User-specific files
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+bin/
+obj/
