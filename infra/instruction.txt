@@ -1,0 +1,3 @@
+docker-compose -f docker-compose.backend.yml -p casino --env-file ../backend/backend.env up --build -docker
+
+також потрібно бути в папці Casino/infra

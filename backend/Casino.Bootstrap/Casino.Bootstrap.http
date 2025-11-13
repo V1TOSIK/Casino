@@ -1,4 +1,4 @@
-@Casino.Bootstrap_HostAddress = http://localhost:5263
+@Casino.Bootstrap_HostAddress = http://localhost:5074
 
 GET {{Casino.Bootstrap_HostAddress}}/weatherforecast/
 Accept: application/json
