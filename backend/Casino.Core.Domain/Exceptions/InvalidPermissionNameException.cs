@@ -14,6 +14,5 @@ namespace Casino.Core.Domain.Exceptions
             : base(message, innerException, DefaultErrorCode) { }
         public InvalidPermissionNameException(Exception innerException)
             : base("Invalid permission name.", innerException, DefaultErrorCode) { }
-    {
     }
 }
