@@ -8,7 +8,8 @@ namespace Casino.Core.Domain.Entities
         public string Email { get; private set; }
         public Guid RoleId { get; private set; }
         public DateTime CreatedAt { get; private set; }
-
+        
+        // EF Core constructor
         private UserEntity() { }
         private UserEntity(string username, string email, Guid roleId)
         {
