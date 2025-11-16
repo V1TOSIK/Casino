@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Casino.Core.Application\Casino.Core.Application.csproj" />
+  </ItemGroup>
+
 </Project>
