@@ -1,5 +1,4 @@
-import React, { useState, useRef } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 
 const symbolsList = ['🍒', '🍋', '🍉', '🍊', '⭐', '7️⃣', '🔔'];
 const symbolHeight = 110;
@@ -7,18 +6,16 @@ const visibleSymbols = 30;
 const rows = 3;
 const cols = 3;
 
-
 function App() {
-  const [balance, setBalance] = useState(1000);
+  const [balance, setBalance] = useState(1000); // Початковий баланс 1000 монет
   const [bet, setBet] = useState(10);
   const [spinsCount, setSpinsCount] = useState(1);
   const [resultText, setResultText] = useState('');
   const [isSpinning, setIsSpinning] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Стан для модального вікна
 
   const currentPositions = useRef(new Array(rows * cols).fill(0));
   const reelsRefs = useRef([]);
-
-  const updateBalance = (newBalance) => setBalance(newBalance);
 
   const animateReel = (element, from, to, duration, onComplete) => {
     const totalSymbols = symbolsList.length;
@@ -73,7 +70,9 @@ function App() {
     } else {
       setResultText('😢 Нічого, спробуйте ще!');
     }
-    updateBalance(balance + totalWin);
+
+    // Оновлення балансу
+    setBalance(prevBalance => prevBalance + totalWin);
   };
 
   const startSpin = () => {
@@ -82,7 +81,8 @@ function App() {
     if (spinsCount <= 0) return alert("Виберіть кількість спінів!");
     if (bet * spinsCount > balance) return alert("Недостатньо балансу!");
 
-    updateBalance(balance - bet * spinsCount);
+    // Оновлення балансу на момент початку гри
+    setBalance(prevBalance => prevBalance - bet * spinsCount); // Віднімаємо ставку з балансу
     setIsSpinning(true);
     setResultText('');
 
@@ -118,6 +118,19 @@ function App() {
 
     spinOnce(0);
   };
+
+  const handleDeposit = () => {
+    // Поповнення балансу
+    setBalance(1000); // Встановлюємо баланс на 1000 монет
+    setIsModalOpen(false); // Закриваємо модальне вікно
+  };
+
+  useEffect(() => {
+    if (balance <= 0) {
+      // Якщо баланс 0, показуємо модальне вікно
+      setIsModalOpen(true);
+    }
+  }, [balance]);
 
   return (
     <div className="h-screen w-screen flex justify-center items-center bg-gradient-to-b from-slate-900 to-slate-800">
@@ -180,6 +193,30 @@ function App() {
           SPIN 🎯
         </button>
       </div>
+
+      {/* Модальне вікно поповнення рахунку */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-cyan p-8 rounded-lg shadow-xl text-center">
+            <h2 className="text-xl font-semibold mb-4">Ваш баланс закінчився!</h2>
+            <p className="mb-6">Хочете поповнити рахунок на 1000 монет?</p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={handleDeposit}
+                className="bg-green-500 text-yelow px-6 py-2 rounded-lg hover:bg-green-600"
+              >
+                Так, поповнити
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-red-500 text-green px-6 py-2 rounded-lg hover:bg-red-600"
+              >
+                Ні, пізніше
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
