@@ -6,7 +6,7 @@ namespace Casino.Core.Domain.Exceptions
     public class UserNotBannedException : BaseException
     {
         private const string DefaultErrorCode = "USER_NOT_BANNED";
-        public override System.Net.HttpStatusCode StatusCode => System.Net.HttpStatusCode.Conflict;
+        public override HttpStatusCode StatusCode => HttpStatusCode.Conflict;
         public UserNotBannedException(string message = "User is not banned.")
             : base(message, DefaultErrorCode) { }
         public UserNotBannedException(string message, Exception innerException)

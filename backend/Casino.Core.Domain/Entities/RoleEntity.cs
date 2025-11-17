@@ -24,5 +24,18 @@ namespace Casino.Core.Domain.Entities
             if (!_permissions.Contains(permission))
                 _permissions.Add(permission);
         }
+
+        public void RemovePermission(PermissionEntity permission)
+        {
+            if (_permissions.Contains(permission))
+                _permissions.Remove(permission);
+        }
+
+        public void UpdateName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new InvalidRoleNameException($"Invalid role name: {name}");
+            Name = name;
+        }
     }
 }

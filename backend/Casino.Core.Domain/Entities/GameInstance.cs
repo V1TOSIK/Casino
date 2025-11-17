@@ -23,5 +23,16 @@ namespace Casino.Core.Domain.Entities
         {
             return new GameInstance(gameId, userId, result);
         }
+
+        public void UpdateResult(string result)
+        {
+            Result = result;
+        }
+
+        public void EndGame()
+        {
+            EndedAt = DateTime.UtcNow;
+        }
     }
 }
+

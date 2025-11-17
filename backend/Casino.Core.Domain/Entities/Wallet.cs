@@ -1,4 +1,5 @@
-﻿using SharedKernel.Domain.Entity;
+﻿using Casino.Core.Domain.Exceptions;
+using SharedKernel.Domain.Entity;
 
 namespace Casino.Core.Domain.Entities
 {
@@ -28,9 +29,60 @@ namespace Casino.Core.Domain.Entities
             IsDeleted = false;
             DeletedAt = null;
         }
+
         public static Wallet Create(Guid roleId, string currency)
         {
             return new Wallet(roleId, currency);
+        }
+
+        public void Deposit(decimal amount)
+        {
+            Balance += amount;
+            UpdatedAt = DateTime.UtcNow;
+        }
+
+        public void ChangeCurrency(string currency)
+        {
+            Currency = currency;
+            UpdatedAt = DateTime.UtcNow;
+        }
+
+        public void Withdraw(decimal amount)
+        {
+            Balance -= amount;
+            UpdatedAt = DateTime.UtcNow;
+        }  
+        
+        public void BanWallet()
+        {
+            if (IsBanned)
+                throw new WalletAlreadyBannedException($"Wallet already banned.");
+            IsBanned = true;
+            BannedAt = DateTime.UtcNow;
+        }
+
+        public void UnbanWallet()
+        {
+            if (!IsBanned)
+                throw new WalletAlreadyNotBannedException($"Wallet is not banned.");
+            IsBanned = false;
+            BannedAt = null;
+        }
+
+        public void DeleteWallet()
+        {
+            if (IsDeleted)
+                throw new WalletAlreadyDeletedException($"Wallet already deleted.");
+            IsDeleted = true;
+            DeletedAt = DateTime.UtcNow;
+        }
+
+        public void RestoreWallet()
+        {
+            if (!IsDeleted)
+                throw new WalletNotDeletedException($"Wallet is not deleted.");
+            IsDeleted = false;
+            DeletedAt = null;
         }
     }
 }
