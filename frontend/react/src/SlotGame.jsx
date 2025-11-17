@@ -46,21 +46,21 @@ function App() {
         grid[r] = results.slice(r * cols, r * cols + cols);
       }
 
-      // Горизонталі
+      
       for (let r = 0; r < rows; r++) {
         if (grid[r][0] === grid[r][1] && grid[r][1] === grid[r][2]) {
           totalWin += betAmount * 3;
         }
       }
 
-      // Вертикалі
+      
       for (let c = 0; c < cols; c++) {
         if (grid[0][c] === grid[1][c] && grid[1][c] === grid[2][c]) {
           totalWin += betAmount * 4;
         }
       }
 
-      // Діагоналі
+      
       if (grid[0][0] === grid[1][1] && grid[1][1] === grid[2][2]) totalWin += betAmount * 2;
       if (grid[0][2] === grid[1][1] && grid[1][1] === grid[2][0]) totalWin += betAmount * 2;
     });
