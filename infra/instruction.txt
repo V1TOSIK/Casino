@@ -1,3 +1,5 @@
-docker-compose -f docker-compose.backend.yml -p casino --env-file ../backend/backend.env up --build -docker
+для запуску auth Service, переходимо в папку Casino/infra, та вводимо команду 
+docker-compose -f docker-compose.auth.yml -p casino --env-file ./auth.env up --build -d
 
-також потрібно бути в папці Casino/infra
+для запуску іншої частини коду, та для спільних сервісів, переходимо в папку Casino/infra, та вводимо команду 
+docker-compose -f docker-compose.base.yml -p casino --env-file ./base.env up --build -d

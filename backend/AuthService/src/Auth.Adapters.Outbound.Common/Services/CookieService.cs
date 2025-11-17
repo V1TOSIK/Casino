@@ -1,0 +1,113 @@
+﻿using Auth.Core.Application.Models;
+using Auth.Core.Application.Ports;
+using Auth.Core.Domain.Exceptions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+namespace Auth.Adapters.Outbound.Common.Services
+{
+    public class CookieService : ICookieService
+    {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ILogger<CookieService> _logger;
+        public CookieService(IHttpContextAccessor httpContextAccessor,
+            ILogger<CookieService> cookieService)
+        {
+            _httpContextAccessor = httpContextAccessor;
+            _logger = cookieService;
+        }
+
+        public void Set(string key, string value, DateTime expirationTime)
+        {
+            CookieOptions options = new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = expirationTime
+            };
+
+            if (string.IsNullOrEmpty(key))
+            {
+                _logger.LogError("Attempted to set a cookie with an empty key.");
+                throw new InvalidCookieParameterException("Cookie key cannot be null or empty.");
+            }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                _logger.LogError("Attempted to set a cookie with an empty value.");
+                throw new InvalidCookieParameterException("Cookie value cannot be null or empty.");
+            }
+
+            _httpContextAccessor.HttpContext?.Response.Cookies.Append(key, value, options);
+        }
+
+        public string? Get(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                _logger.LogError("Attempted to get a cookie with an empty key.");
+                throw new InvalidCookieParameterException("Cookie key cannot be null or empty.");
+            }
+
+            return _httpContextAccessor.HttpContext?.Request.Cookies[key];
+        }
+
+        public void Delete(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                _logger.LogError("Attempted to delete a cookie with an empty key.");
+                throw new InvalidCookieParameterException("Cookie key cannot be null or empty.");
+            }
+
+            _httpContextAccessor.HttpContext?.Response.Cookies.Delete(key);
+        }
+
+        public void SetRefreshTokenCookieIfNotNull(string token, DateTime expiration)
+        {
+            if (token != null)
+                Set("Refresh-Token", token, expiration);
+        }
+
+        public void SetDeviceIdCookieIfNotNull(Guid? deviceId)
+        {
+            if (deviceId != null)
+                Set("Device-Id", deviceId.ToString()!, DateTime.UtcNow.AddYears(1));
+        }
+
+        public void SetRefreshTokenAndDeviceCookie(AuthResult result, Guid deviceId)
+        {
+            SetRefreshTokenCookieIfNotNull(result.RefreshToken, result.Expiration);
+            SetDeviceIdCookieIfNotNull(deviceId == Guid.Empty ? result.DeviceId : deviceId);
+        }
+
+        public void SetResetTokenCookie(string token, DateTime expiration)
+        {
+            if (token != null)
+                Set("Reset-Token", token, expiration);
+        }
+
+        public void SetSessionTokenCookie(string token, DateTime expiration)
+        {
+            if (token != null)
+                Set("Session-Token", token, expiration);
+        }
+
+        public string? GetRefreshToken() => Get("Refresh-Token");
+        public string? GetResetToken() => Get("Reset-Token");
+        public string? GetSessionToken() => Get("Session-Token");
+
+        public Guid GetDeviceId()
+        {
+            var deviceIdString = Get("Device-Id");
+            if (deviceIdString == null || !Guid.TryParse(deviceIdString, out var deviceId))
+                return Guid.Empty;
+            return deviceId;
+        }
+
+        public void DeleteRefreshTokenCookie() => Delete("Refresh-Token");
+        public void DeleteResetTokenCookie() => Delete("Reset-Token");
+        public void DeleteSessionTokenCookie() => Delete("Session-Token");
+    }
+}

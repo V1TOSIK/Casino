@@ -1,0 +1,39 @@
+services:
+  auth_write_db:
+    container_name: auth_write_db
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - auth_write_db_data:/var/lib/postgresql/data
+    env_file:
+      - ./base.env
+    networks:
+      - casino-net
+
+  auth-service:
+    container_name: auth-service
+    build:
+      context: ../backend/
+      dockerfile: /AuthService/src/Auth.Bootstrap/Dockerfile
+    ports:
+      - "8001:8081"
+    depends_on:
+      - auth_write_db
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8081
+    env_file:
+      - ./auth.env
+      - ./base.env
+    networks:
+      - casino-net
+
+volumes:
+  auth_write_db_data:
+
+networks:
+  casino-net:
+    external: true
