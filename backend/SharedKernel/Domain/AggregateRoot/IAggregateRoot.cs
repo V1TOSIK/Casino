@@ -1,4 +1,6 @@
-﻿namespace SharedKernel.Domain.AggregateRoot
+﻿using SharedKernel.Domain.Events;
+
+namespace SharedKernel.Domain.AggregateRoot
 {
     public interface IAggregateRoot
     {
