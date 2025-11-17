@@ -3,3 +3,6 @@ docker-compose -f docker-compose.auth.yml -p casino --env-file ./auth.env up --b
 
 для запуску іншої частини коду, та для спільних сервісів, переходимо в папку Casino/infra, та вводимо команду 
 docker-compose -f docker-compose.base.yml -p casino --env-file ./base.env up --build -d
+
+lля запуску frontend
+docker-compose -f docker-compose.frontend.yml -p casino up --build -d
