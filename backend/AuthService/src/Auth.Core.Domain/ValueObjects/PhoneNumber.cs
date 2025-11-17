@@ -1,7 +1,8 @@
 ﻿using Auth.Core.Domain.Exceptions;
+using SharedKernel.Domain.ValueObjects;
 using System.Text.RegularExpressions;
 
-namespace SharedKernel.Domain.ValueObjects
+namespace Auth.Core.Domain.ValueObjects
 {
     public class PhoneNumber : ValueObject
     {
