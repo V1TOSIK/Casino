@@ -1,4 +1,7 @@
-﻿namespace SharedKernel.Domain.AggregateRoot
+﻿using SharedKernel.Domain.Entity;
+using SharedKernel.Domain.Events;
+
+namespace SharedKernel.Domain.AggregateRoot
 {
     public abstract class AggregateRoot<TId> : Entity<TId>, IAggregateRoot
     {
