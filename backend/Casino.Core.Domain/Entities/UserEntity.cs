@@ -60,7 +60,7 @@ namespace Casino.Core.Domain.Entities
 
         public void RestoreUser()
         {
-            if (!IsDeleted)
+            if (IsDeleted)
                 throw new UserNotDeletedException($"User is not deleted.");
             IsDeleted = false;
             DeletedAt = null;

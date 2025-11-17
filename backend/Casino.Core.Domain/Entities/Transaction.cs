@@ -9,6 +9,7 @@ namespace Casino.Core.Domain.Entities
         public string Type { get; private set; } // Deposit, Withdrawal, Bet, Win
         public DateTime CreatedAt { get; private set; }
 
+        // EF Core constructor
         private Transaction() { }
         public Transaction(Guid walletId, decimal amount, string type)
         {
@@ -16,6 +17,11 @@ namespace Casino.Core.Domain.Entities
             Amount = amount;
             Type = type;
             CreatedAt = DateTime.UtcNow;
+        }
+
+        public static Transaction Create(Guid walletId, decimal amount, string type)
+        {
+            return new Transaction(walletId, amount, type);
         }
     }
 }

@@ -11,5 +11,17 @@ namespace Casino.Core.Domain.Entities
         public string Result { get; private set; }
 
         private GameInstance() { }
+        public GameInstance(Guid gameId, Guid userId, string result)
+        {
+            GameId = gameId;
+            UserId = userId;
+            StartedAt = DateTime.UtcNow;
+            EndedAt = null;
+            Result = result;
+        }
+        public static GameInstance Create(Guid gameId, Guid userId, string result)
+        {
+            return new GameInstance(gameId, userId, result);
+        }
     }
 }
