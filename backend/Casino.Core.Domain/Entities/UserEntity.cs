@@ -1,37 +1,29 @@
 ﻿using Casino.Core.Domain.Exceptions;
 using SharedKernel.Domain.Entity;
-using System.Data;
-using System.Xml.Linq;
 
 namespace Casino.Core.Domain.Entities
 {
     public class UserEntity : Entity<Guid>
     {
-
-        public string Email { get; private set; }
-        public Guid RoleId { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-        public bool IsBanned { get; private set; }
-        public DateTime? BannedAt { get; private set; }
-        public bool IsDeleted { get; private set; }
-        public DateTime? DeletedAt { get; private set; }
+        public string UserName { get; set; }
+        public bool IsBanned { get; private set; } = false;
+        public bool IsDeleted { get; private set; } = false;
 
         // EF Core constructor
         private UserEntity() { }
-        private UserEntity(string email, Guid roleId)
+        private UserEntity(string userName)
         {
-            Email = email;
-            RoleId = roleId;
-            CreatedAt = DateTime.UtcNow;
-            IsBanned = false;
-            BannedAt = null;
-            IsDeleted = false;
-            DeletedAt = null;
+            UserName = userName;
         }
 
-        public static UserEntity Create(string email, Guid roleId)
+        public static UserEntity Create(string userName)
         {
-            return new UserEntity(email, roleId);
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                throw new InvalidUserNameException("User name cannot be null or empty");
+            }
+
+            return new UserEntity(userName);
         }
 
         public void BanUser()
@@ -39,7 +31,6 @@ namespace Casino.Core.Domain.Entities
             if (IsBanned)
                 throw new UserAlreadyBannedException($"User already banned.");
             IsBanned = true;
-            BannedAt = DateTime.UtcNow;
         }
 
         public void DeleteUser()
@@ -47,7 +38,6 @@ namespace Casino.Core.Domain.Entities
             if (IsDeleted)
                 throw new UserAlreadyDeletedException($"User already deleted.");
             IsDeleted = true;
-            DeletedAt = DateTime.UtcNow;
         }
 
         public void UnbanUser()
@@ -55,7 +45,6 @@ namespace Casino.Core.Domain.Entities
             if (IsBanned)
                 throw new UserNotBannedException($"User is not banned.");
             IsBanned = false;
-            BannedAt = null;
         }
 
         public void RestoreUser()
@@ -63,7 +52,6 @@ namespace Casino.Core.Domain.Entities
             if (IsDeleted)
                 throw new UserNotDeletedException($"User is not deleted.");
             IsDeleted = false;
-            DeletedAt = null;
         }   
     }
 }
