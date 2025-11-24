@@ -1,0 +1,6 @@
+@User.Bootstrap_HostAddress = http://localhost:5221
+
+GET {{User.Bootstrap_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
