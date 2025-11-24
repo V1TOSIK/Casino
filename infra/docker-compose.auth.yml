@@ -1,18 +1,4 @@
 services:
-  auth_postgres_db:
-    container_name: auth_postgres_db
-    image: postgres:17
-    environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    volumes:
-      - auth_db_data:/var/lib/postgresql/data
-    env_file:
-      - ./base.env
-    networks:
-      - casino-net
-
   auth-service:
     container_name: auth-service
     build:
@@ -27,6 +13,22 @@ services:
       ASPNETCORE_URLS: http://+:8081
     env_file:
       - ./auth.env
+      - ./base.env
+    networks:
+      - casino-net
+
+  auth_postgres_db:
+    container_name: auth_postgres
+    image: postgres:17
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - auth_db_data:/var/lib/postgresql/data
+    env_file:
       - ./base.env
     networks:
       - casino-net

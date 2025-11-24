@@ -10,7 +10,7 @@ COPY Casino.Bootstrap/Casino.Bootstrap.csproj Casino.Bootstrap/
 COPY Casino.Core.Domain/Casino.Core.Domain.csproj Casino.Core.Domain/
 COPY Casino.Core.Application/Casino.Core.Application.csproj Casino.Core.Application/
 COPY Casino.Adapters.Inbound.Api/Casino.Adapters.Inbound.Api.csproj Casino.Adapters.Inbound.Api/
-COPY Casino.Adapters.Outbound.PostgresEfWriteAccess/Casino.Adapters.Outbound.PostgresEfWriteAccess.csproj Casino.Adapters.Outbound.PostgresEfWriteAccess/
+COPY Casino.Adapters.Outbound.Postgres/Casino.Adapters.Outbound.Postgres.csproj Casino.Adapters.Outbound.Postgres/
 COPY AuthTools/AuthTools.csproj AuthTools/ 
 COPY SharedKernel/SharedKernel.csproj SharedKernel/
 
