@@ -23,5 +23,15 @@ namespace Casino.Core.Domain.Entities
         {
             return new Transaction(walletId, amount, type);
         }
+
+        public void UpdateAmount(decimal amount)
+        {
+            Amount = amount;
+        }
+
+        public void UpdateType(string type)
+        {
+            Type = type;
+        }
     }
 }

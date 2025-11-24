@@ -9,7 +9,7 @@ COPY AuthService/src/Auth.Bootstrap/Auth.Bootstrap.csproj AuthService/src/Auth.B
 COPY AuthService/src/Auth.Core.Domain/Auth.Core.Domain.csproj AuthService/src/Auth.Core.Domain/
 COPY AuthService/src/Auth.Core.Application/Auth.Core.Application.csproj AuthService/src/Auth.Core.Application/
 COPY AuthService/src/Auth.Adapters.Inbound.Api/Auth.Adapters.Inbound.Api.csproj AuthService/src/Auth.Adapters.Inbound.Api/
-COPY AuthService/src/Auth.Adapters.Outbound.PostgresEfWriteAccess/Auth.Adapters.Outbound.PostgresEfWriteAccess.csproj AuthService/src/Auth.Adapters.PostgresEfWriteAccess.Outbox/
+COPY AuthService/src/Auth.Adapters.Outbound.Postgres/Auth.Adapters.Outbound.Postgres.csproj AuthService/src/Auth.Adapters.Postgres/
 COPY AuthService/src/Auth.Adapters.Outbound.Common/Auth.Adapters.Outbound.Common.csproj AuthService/src/Auth.Adapters.Outbound.Common/
 COPY SharedKernel/SharedKernel.csproj SharedKernel/
 COPY Shared.RedisStorage/Shared.RedisStorage.csproj Shared.RedisStorage/

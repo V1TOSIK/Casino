@@ -22,9 +22,8 @@
     <ProjectReference Include="..\..\..\Shared.RedisStorage\Shared.RedisStorage.csproj" />
     <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
     <ProjectReference Include="..\Auth.Adapters.Inbound.Api\Auth.Adapters.Inbound.Api.csproj" />
-    <ProjectReference Include="..\Auth.Adapters.Outbound.Api\Auth.Adapters.Inbound.Api.csproj" />
     <ProjectReference Include="..\Auth.Adapters.Outbound.Common\Auth.Adapters.Outbound.Common.csproj" />
-    <ProjectReference Include="..\Auth.Adapters.Outbound.PostgresEfWriteAccess\Auth.Adapters.Outbound.PostgresEfWriteAccess.csproj" />
+    <ProjectReference Include="..\Auth.Adapters.Outbound.Postgres\Auth.Adapters.Outbound.Postgres.csproj" />
     <ProjectReference Include="..\Auth.Core.Application\Auth.Core.Application.csproj" />
   </ItemGroup>
 

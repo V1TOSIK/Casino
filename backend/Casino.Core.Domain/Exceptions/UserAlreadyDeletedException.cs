@@ -6,7 +6,7 @@ namespace Casino.Core.Domain.Exceptions
     public class UserAlreadyDeletedException : BaseException
     {   
         private const string DefaultErrorCode = "USER_ALREADY_DELETED";
-        public override System.Net.HttpStatusCode StatusCode => System.Net.HttpStatusCode.Conflict;
+        public override HttpStatusCode StatusCode => HttpStatusCode.Conflict;
         public UserAlreadyDeletedException(string message = "User already deleted.")
             : base(message, DefaultErrorCode) { }
         public UserAlreadyDeletedException(string message, Exception innerException)

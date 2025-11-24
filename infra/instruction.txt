@@ -1,8 +1,13 @@
-для запуску auth Service, переходимо в папку Casino/infra, та вводимо команду 
-docker-compose -f docker-compose.auth.yml -p casino --env-file ./auth.env up --build -d
+Для всіх операцій потрібно перебувати в папці casino/infra
+для ініціалізації спочатку нам потрібно прописати команди
+1- переходимо в infra > cd infra
+2 - створюємо спільний для всіх контейнерів network > docker network create casino-net
 
-для запуску іншої частини коду, та для спільних сервісів, переходимо в папку Casino/infra, та вводимо команду 
+для запуску іншої частини коду, та для спільних сервісів, вводимо команду 
 docker-compose -f docker-compose.base.yml -p casino --env-file ./base.env up --build -d
 
-lля запуску frontend
+для запуску auth Service, вводимо команду 
+docker-compose -f docker-compose.auth.yml -p casino --env-file ./auth.env up --build -d
+
+Для запуску frontend
 docker-compose -f docker-compose.frontend.yml -p casino up --build -d
