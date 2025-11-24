@@ -2,15 +2,15 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Casino.Adapters.Outbound.PostgresEfWriteAccess.DependencyInjection
+namespace Casino.Adapters.Outbound.Postgres.DependencyInjection
 {
-    public static class PostgresEfWriteAccessInjection
+    public static class PostgresInjection
     {
-        public static IServiceCollection AddPostgresEfWriteAccessInjection(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPostgresAdapter(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<PostgresEfWriteAccessDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("Postgres"),
+            services.AddDbContext<CasinoDbContext>(options =>
+                options.UseNpgsql(configuration.GetConnectionString("CasinoPostgres"),
                 npgsqlOptions =>
                 {
                     npgsqlOptions.EnableRetryOnFailure(

@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casino.Core.Domain", "Casin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casino.Core.Application", "Casino.Core.Application\Casino.Core.Application.csproj", "{2BAF9F85-FFC2-4564-9346-6DBEC9A29222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casino.Adapters.Outbound.PostgresEfWriteAccess", "Casino.Adapters.Outbound.PostgresEfWriteAccess\Casino.Adapters.Outbound.PostgresEfWriteAccess.csproj", "{CD22359B-3192-459B-BDB2-59082CAAF62B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casino.Adapters.Inbound.Api", "Casino.Adapters.Inbound.Api\Casino.Adapters.Inbound.Api.csproj", "{EB84498B-1D6F-42F9-B18B-62E4E04ADD0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{1A9BAC45-57EE-4036-A1D1-D90B8F1500C1}"
@@ -31,11 +29,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.RedisStorage", "Shar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Adapters.Outbound.Common", "AuthService\src\Auth.Adapters.Outbound.Common\Auth.Adapters.Outbound.Common.csproj", "{360031D9-8CAE-4C9C-9E10-952CA6F5D7C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Adapters.Outbound.PostgresEfWriteAccess", "AuthService\src\Auth.Adapters.Outbound.PostgresEfWriteAccess\Auth.Adapters.Outbound.PostgresEfWriteAccess.csproj", "{E8E58F1E-7ACE-4E5D-862D-B250580226EB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Notifications", "Shared.Notifications\Shared.Notifications.csproj", "{A49C49CF-E816-44A1-B2CD-29033651124A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Adapters.Inbound.Api", "AuthService\src\Auth.Adapters.Inbound.Api\Auth.Adapters.Inbound.Api.csproj", "{F4EB3391-901E-31E5-FE04-8161B260604E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casino.Adapters.Outbound.Postgres", "Casino.Adapters.Outbound.Postgres\Casino.Adapters.Outbound.Postgres.csproj", "{710C4A8D-84A0-42A8-91CF-12D1E5CD9F95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Adapters.Outbound.Postgres", "AuthService\src\Auth.Adapters.Outbound.Postgres\Auth.Adapters.Outbound.Postgres.csproj", "{CE748E44-78A2-4716-994C-74DD53013DFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +51,6 @@ Global
 		{2BAF9F85-FFC2-4564-9346-6DBEC9A29222}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BAF9F85-FFC2-4564-9346-6DBEC9A29222}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BAF9F85-FFC2-4564-9346-6DBEC9A29222}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD22359B-3192-459B-BDB2-59082CAAF62B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD22359B-3192-459B-BDB2-59082CAAF62B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD22359B-3192-459B-BDB2-59082CAAF62B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD22359B-3192-459B-BDB2-59082CAAF62B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB84498B-1D6F-42F9-B18B-62E4E04ADD0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB84498B-1D6F-42F9-B18B-62E4E04ADD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB84498B-1D6F-42F9-B18B-62E4E04ADD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -91,10 +87,6 @@ Global
 		{360031D9-8CAE-4C9C-9E10-952CA6F5D7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360031D9-8CAE-4C9C-9E10-952CA6F5D7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360031D9-8CAE-4C9C-9E10-952CA6F5D7C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8E58F1E-7ACE-4E5D-862D-B250580226EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8E58F1E-7ACE-4E5D-862D-B250580226EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8E58F1E-7ACE-4E5D-862D-B250580226EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8E58F1E-7ACE-4E5D-862D-B250580226EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A49C49CF-E816-44A1-B2CD-29033651124A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A49C49CF-E816-44A1-B2CD-29033651124A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A49C49CF-E816-44A1-B2CD-29033651124A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -103,6 +95,14 @@ Global
 		{F4EB3391-901E-31E5-FE04-8161B260604E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4EB3391-901E-31E5-FE04-8161B260604E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4EB3391-901E-31E5-FE04-8161B260604E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{710C4A8D-84A0-42A8-91CF-12D1E5CD9F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{710C4A8D-84A0-42A8-91CF-12D1E5CD9F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{710C4A8D-84A0-42A8-91CF-12D1E5CD9F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{710C4A8D-84A0-42A8-91CF-12D1E5CD9F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE748E44-78A2-4716-994C-74DD53013DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE748E44-78A2-4716-994C-74DD53013DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE748E44-78A2-4716-994C-74DD53013DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE748E44-78A2-4716-994C-74DD53013DFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,8 +113,8 @@ Global
 		{ED6D9FE4-BE8D-48C4-A46B-1C4E4DACAB94} = {7FD61736-F604-417E-9B8B-B3D1EA9E4CEE}
 		{90E191ED-57EA-4129-861D-2812355DE8DE} = {7FD61736-F604-417E-9B8B-B3D1EA9E4CEE}
 		{360031D9-8CAE-4C9C-9E10-952CA6F5D7C8} = {7FD61736-F604-417E-9B8B-B3D1EA9E4CEE}
-		{E8E58F1E-7ACE-4E5D-862D-B250580226EB} = {7FD61736-F604-417E-9B8B-B3D1EA9E4CEE}
 		{F4EB3391-901E-31E5-FE04-8161B260604E} = {7FD61736-F604-417E-9B8B-B3D1EA9E4CEE}
+		{CE748E44-78A2-4716-994C-74DD53013DFC} = {7FD61736-F604-417E-9B8B-B3D1EA9E4CEE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9877899C-14B4-4DE6-B8F4-95EF12E58A82}

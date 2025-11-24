@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SharedKernel.Domain.Regexs;
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess.Repositories
+namespace Auth.Adapters.Outbound.Postgres.Repositories
 {
     public class AuthRepository : IAuthRepository
     {
-        private readonly PostgresEfWriteAccessDbContext _dbContext;
+        private readonly AuthDbContext _dbContext;
         private readonly ILogger<AuthRepository> _logger;
-        public AuthRepository(PostgresEfWriteAccessDbContext dbContext,
+        public AuthRepository(AuthDbContext dbContext,
             ILogger<AuthRepository> logger)
         {
             _dbContext = dbContext;

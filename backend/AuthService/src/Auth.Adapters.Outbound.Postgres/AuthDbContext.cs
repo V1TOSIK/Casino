@@ -7,20 +7,20 @@ using SharedKernel.DbInitializer;
 using SharedKernel.Domain.AggregateRoot;
 using SharedKernel.Statics;
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess
+namespace Auth.Adapters.Outbound.Postgres
 {
-    public class PostgresEfWriteAccessDbContext : DbContext, ISeedableDbContext
+    public class AuthDbContext : DbContext, ISeedableDbContext
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly IMediator _mediator;
 
-        public PostgresEfWriteAccessDbContext(DbContextOptions<PostgresEfWriteAccessDbContext> options)
+        public AuthDbContext(DbContextOptions<AuthDbContext> options)
             : base(options)
         {
         }
 
-        public PostgresEfWriteAccessDbContext(
-            DbContextOptions<PostgresEfWriteAccessDbContext> options,
+        public AuthDbContext(
+            DbContextOptions<AuthDbContext> options,
             IPasswordHasher passwordHasher,
             IMediator mediator)
             : base(options)
@@ -148,7 +148,7 @@ namespace Auth.Adapters.Outbound.PostgresEfWriteAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(PostgresEfWriteAccessDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AuthDbContext).Assembly);
         }
     }
 }

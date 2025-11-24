@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Auth.Core.Domain.Entities;
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess.Configurations
+namespace Auth.Adapters.Outbound.Postgres.Configurations
 {
     public class ExternalLoginConfiguration : IEntityTypeConfiguration<ExternalLogin>
     {

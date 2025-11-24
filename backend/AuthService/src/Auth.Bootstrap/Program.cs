@@ -3,7 +3,7 @@ using Microsoft.OpenApi.Models;
 using SharedKernel.CurrentUser;
 using SharedKernel.DbInitializer;
 using Auth.Adapters.Outbound.Common.DependencyInjection;
-using Auth.Adapters.Outbound.PostgresEfWriteAccess.DependencyInjection;
+using Auth.Adapters.Outbound.Postgres.DependencyInjection;
 using Auth.Core.Application.DependencyInjection;
 using Shared.Notifications.DependencyInjection;
 using Shared.RedisStorage.DependencyInjection;
@@ -20,7 +20,7 @@ builder.Services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new() { Title = "Marketplace Auth API", Version = "v1" });
+    options.SwaggerDoc("v1", new() { Title = "Casino Auth API", Version = "v1" });
 
     options.AddSecurityDefinition("Bearer", new()
     {
@@ -54,7 +54,7 @@ builder.Services.AddAuthorizationInjection(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddApiInjection(builder.Configuration);
 builder.Services.AddCommonBoundInjection(builder.Configuration);
-builder.Services.AddPostgresEfWriteAccessInjection(builder.Configuration);
+builder.Services.AddPostgresAdapter(builder.Configuration);
 builder.Services.AddNotificationInjection(builder.Configuration);
 builder.Services.AddRedisStorage(builder.Configuration);
 
@@ -76,7 +76,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Marketplace Auth API v1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Casino Auth API v1");
         options.RoutePrefix = "swagger";
         options.ConfigObject.AdditionalItems["persistAuthorization"] = true;
     });

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess.Configurations
+namespace Auth.Adapters.Outbound.Postgres.Configurations
 {
     public class RoleConfiguration : IEntityTypeConfiguration<RoleEntity>
     {

@@ -1,12 +1,12 @@
 ﻿using Auth.Core.Application.Ports;
 using SharedKernel.UnitOfWork;
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess.UnitOfWork
+namespace Auth.Adapters.Outbound.Postgres.UnitOfWork
 {
     public class AuthUnitOfWork : IAuthUnitOfWork
     {
-        private readonly IUnitOfWork<PostgresEfWriteAccessDbContext> _unitOfWork;
-        public AuthUnitOfWork(IUnitOfWork<PostgresEfWriteAccessDbContext> unitOfWork)
+        private readonly IUnitOfWork<AuthDbContext> _unitOfWork;
+        public AuthUnitOfWork(IUnitOfWork<AuthDbContext> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

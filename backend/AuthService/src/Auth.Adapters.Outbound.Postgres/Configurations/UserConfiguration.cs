@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess.Configurations
+namespace Auth.Adapters.Outbound.Postgres.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {

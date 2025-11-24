@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess.Migrations
+namespace Auth.Adapters.Outbound.Postgres.Migrations
 {
     /// <inheritdoc />
     public partial class InitMigrations : Migration

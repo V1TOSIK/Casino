@@ -3,13 +3,13 @@ using Auth.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Auth.Adapters.Outbound.PostgresEfWriteAccess.Repositories
+namespace Auth.Adapters.Outbound.Postgres.Repositories
 {
     public class RefreshTokenRepository : IRefreshTokenRepository
     {
-        private readonly PostgresEfWriteAccessDbContext _dbContext;
+        private readonly AuthDbContext _dbContext;
         private readonly ILogger<RefreshTokenRepository> _logger;
-        public RefreshTokenRepository(PostgresEfWriteAccessDbContext dbContext,
+        public RefreshTokenRepository(AuthDbContext dbContext,
             ILogger<RefreshTokenRepository> logger)
         {
             _dbContext = dbContext;
