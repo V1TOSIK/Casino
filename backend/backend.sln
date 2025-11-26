@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Core.Application", "Us
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Adapters.Inbound.Api", "UserService\src\User.Adapters.Inbound.Api\User.Adapters.Inbound.Api.csproj", "{5A62410C-5A5C-43B9-BF18-AFC0C9A1AA2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Adapters.Outbound.Postgres", "UserService\src\User.Adapters.Outbound.Postgres\User.Adapters.Outbound.Postgres.csproj", "{5B73A329-DA66-403C-B6CD-1BD85E2A2559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,10 @@ Global
 		{5A62410C-5A5C-43B9-BF18-AFC0C9A1AA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A62410C-5A5C-43B9-BF18-AFC0C9A1AA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A62410C-5A5C-43B9-BF18-AFC0C9A1AA2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B73A329-DA66-403C-B6CD-1BD85E2A2559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B73A329-DA66-403C-B6CD-1BD85E2A2559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B73A329-DA66-403C-B6CD-1BD85E2A2559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B73A329-DA66-403C-B6CD-1BD85E2A2559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,6 +154,7 @@ Global
 		{2C5CCB61-8CCB-4CAE-B2BA-175B22819F2A} = {46A898B2-AD5B-4707-96E9-B0D7A0BB0FD7}
 		{46BF90E7-D86D-4EC7-8137-A2670B75A9AE} = {46A898B2-AD5B-4707-96E9-B0D7A0BB0FD7}
 		{5A62410C-5A5C-43B9-BF18-AFC0C9A1AA2B} = {46A898B2-AD5B-4707-96E9-B0D7A0BB0FD7}
+		{5B73A329-DA66-403C-B6CD-1BD85E2A2559} = {46A898B2-AD5B-4707-96E9-B0D7A0BB0FD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9877899C-14B4-4DE6-B8F4-95EF12E58A82}
